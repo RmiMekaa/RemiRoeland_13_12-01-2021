@@ -5,6 +5,7 @@ import { MainNav } from './components/MainNav/MainNav';
 import { Footer } from './components/Footer/Footer';
 import { HomePage } from './pages/HomePage';
 import { SignIn } from './pages/SignIn/SignIn';
+import { UserPage } from './pages/UserPage/UserPage';
 import './main.scss';
 
 
@@ -15,6 +16,7 @@ ReactDOM.render(
       <Routes>
         <Route path="/" element={<HomePage />} />
         <Route path="/sign-in.html" element={<SignIn />} />
+        <Route path="/user.html" element={<UserPage />} />
       </Routes>
     </Router>
     <Footer />
