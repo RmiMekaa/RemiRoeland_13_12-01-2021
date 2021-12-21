@@ -4,6 +4,7 @@ import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 import { MainNav } from './components/MainNav/MainNav';
 import { Footer } from './components/Footer/Footer';
 import { HomePage } from './pages/HomePage';
+import { SignIn } from './pages/SignIn/SignIn';
 import './main.scss';
 
 
@@ -13,6 +14,7 @@ ReactDOM.render(
     <Router>
       <Routes>
         <Route path="/" element={<HomePage />} />
+        <Route path="/sign-in.html" element={<SignIn />} />
       </Routes>
     </Router>
     <Footer />
