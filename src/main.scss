@@ -1,14 +1,14 @@
+@import "./pages/SignInPage/SignInPage.scss";
+@import "./pages/TransactionsPage/TransactionsPage.scss";
 @import "./components/MainNav/MainNav.scss";
-@import "./components/FeatureCard/FeatureCard.scss";
 @import "./components/Hero/Hero.scss";
 @import "./components/Features/Features.scss";
+@import "./components/FeatureCard/FeatureCard.scss";
 @import "./components/Footer/Footer.scss";
 @import "./components/Login/Login.scss";
 @import "./components/Account/Account.scss";
 @import "./components/UserHeader/UserHeader.scss";
 @import "./components/EditNameForm/EditNameForm.scss";
-@import "./pages/SignInPage/SignInPage.scss";
-@import "./pages/TransactionsPage/TransactionsPage.scss";
 @import "./components/Transaction/Transaction.scss";
 
 * {
@@ -39,10 +39,6 @@ body {
   min-height: 100vh;
   max-width: 1440px;
   margin: auto;
-}
-
-main {
-  flex: 1 1 auto;
 }
 
 .sr-only {

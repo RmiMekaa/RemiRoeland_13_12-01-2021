@@ -19,7 +19,7 @@ export function FeatureCard(props) {
     <article className="featureCard">
       {setIcon(type)}
       <h3 className="featureCard__title">{title}</h3>
-      <p>{text}</p>
+      <p className="featureCard__text">{text}</p>
     </article>
   )
 }
