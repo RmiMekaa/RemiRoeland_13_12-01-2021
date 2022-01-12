@@ -1,42 +1,25 @@
 import React from "react";
 import { UserHeader } from "../../components/UserHeader/UserHeader";
+import { Account } from "../../components/Account/Account";
+import { accountsMockData } from "../../mocks/accounts";
+import { getUserProfile } from "../../store/actions/UserActions";
+import { useDispatch } from "react-redux";
 
 export function UserPage() {
+
+  const dispatch = useDispatch()
+  dispatch(getUserProfile());
+
+  // Mock Data ↓
+  const accounts = accountsMockData
+
   return (
     <main className="main bg-dark">
       <h2 className="sr-only">Accounts</h2>
       <UserHeader />
-      <section className="account">
-        <div className="account-content-wrapper">
-          <h3 className="account-title">Argent Bank Checking (x8349)</h3>
-          <p className="account-amount">$2,082.79</p>
-          <p className="account-amount-description">Available Balance</p>
-        </div>
-        <div className="account-content-wrapper cta">
-          <button className="transaction-button">View transactions</button>
-        </div>
-      </section>
-      <section className="account">
-        <div className="account-content-wrapper">
-          <h3 className="account-title">Argent Bank Savings (x6712)</h3>
-          <p className="account-amount">$10,928.42</p>
-          <p className="account-amount-description">Available Balance</p>
-        </div>
-        <div className="account-content-wrapper cta">
-          <button className="transaction-button">View transactions</button>
-        </div>
-      </section>
-      <section className="account">
-        <div className="account-content-wrapper">
-          <h3 className="account-title">Argent Bank Credit Card (x8349)</h3>
-          <p className="account-amount">$184.30</p>
-          <p className="account-amount-description">Current Balance</p>
-        </div>
-        <div className="account-content-wrapper cta">
-          <button className="transaction-button">View transactions</button>
-        </div>
-      </section>
+      {accounts.map((account) => (
+        <Account key={account.id + account.name} data={account} />
+      ))}
     </main>
-
   )
 }
