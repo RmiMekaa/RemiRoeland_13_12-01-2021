@@ -37,14 +37,20 @@
 
 .transaction-button {
   display: block;
+  text-align: center;
   width: 100%;
-  padding: 8px;
   font-size: 1.1rem;
   font-weight: bold;
-  margin-top: 1rem;
   border-color: #00bc77;
   background-color: #00bc77;
-  color: #fff;
+  &__link {
+    padding: 8px;
+    display: block;
+    width: 100%;
+    height: 100%;
+    text-decoration: none;
+    color: #fff;
+  }
 }
 
 @media (min-width: 720px) {

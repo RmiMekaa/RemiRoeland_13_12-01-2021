@@ -1,0 +1,40 @@
+.account-resume {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  width: 100%;
+  border: 2px #bfc8d3 solid;
+  padding: 2rem;
+  font-weight: bold;
+  background-color: white;
+  &__title {
+    font-size: 1rem;
+  }
+  &__amount {
+    font-size: 2.5rem;
+  }
+}
+
+.transactionsPage {
+  background-color: #DDE2EA;
+}
+
+.transactions {
+  width: 80%;
+  margin: auto;
+  display: flex;
+  flex-direction: column;
+  padding-top: 4rem;
+  padding-bottom: 4rem;
+  &__labels {
+    padding: 1rem;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+    & li {
+      text-transform: uppercase;
+      list-style-type: none;
+      font-weight: bold;
+      font-size: 0.8rem;
+    }
+  }
+}
