@@ -1,79 +1,82 @@
-import React, { useEffect, useState } from "react"
-import { EditName } from "../../store/actions/UserActions";
+import React from "react"
 import { useDispatch } from "react-redux";
 import { useSelector } from "react-redux";
+import { selectUserFirstName, selectUserLastName } from "../../store/selectors";
+import { useState } from "react";
+import { sendEditNameRequest } from "../../services/api";
+import { editNameAction } from "../../store/reducers/UserReducer";
 
-export function EditNameForm({ setEdit }) {
-  //Get userInfos from the redux store
-  const userInfos = useSelector((state) => state.user);
-  //UseState
-  const [newFirstName, setNewFirstName] = useState("");
-  const [newLastName, setNewLastName] = useState("");
-  const [isValid, setIsValid] = useState(false);
-  const [displayError, setDisplayError] = useState(false);
-  const [errorMsg, setErrorMsg] = useState("");
-  //Init useDispatch() to dispatch the edit name action on form submission
+/**
+ * React component for the edit name form
+ * @param {Object} props
+ * @property {function} props.setEdit
+ * @component 
+ */
+export function EditNameForm(props) {
+  const { setEdit } = props;
+  const firstName = useSelector(selectUserFirstName);
+  const lastName = useSelector(selectUserLastName)
   const dispatch = useDispatch()
 
-  useEffect(() => {
-    formValidation();
-  }, [newFirstName, newLastName])
+  const [firstNameInputValue, setNewFirstNameInputValue] = useState(firstName);
+  const [lastNameInputValue, setNewLastNameInputValue] = useState(lastName);
+  const [displayError, setDisplayError] = useState(false);
+  const [errorMsg, setErrorMsg] = useState("");
+
 
   return (
     <div className="editNameForm">
       {displayError ? (<span style={{ color: "red" }}>{errorMsg}</span>) : null}
       <div className="editNameForm__inputs">
-        <input className="editNameForm__inputs__input" placeholder={userInfos.firstName} onChange={(e) => setNewFirstName(e.target.value)} />
-        <input className="editNameForm__inputs__input" placeholder={userInfos.lastName} onChange={(e) => setNewLastName(e.target.value)} />
+        <input className="editNameForm__inputs__input" placeholder={firstName} onChange={(e) => setNewFirstNameInputValue(e.target.value)} />
+        <input className="editNameForm__inputs__input" placeholder={lastName} onChange={(e) => setNewLastNameInputValue(e.target.value)} />
       </div>
       <div className="editNameForm__btns">
         <button className="editNameForm__btns__btn" onClick={() => handleSubmit()}>Save</button>
-        <button className="editNameForm__btns__btn" onClick={() => handleCancel()}>Cancel</button>
+        <button className="editNameForm__btns__btn" onClick={() => setEdit(false)}>Cancel</button>
       </div>
     </div>
   )
 
   /**
-   * If the form is valid, close form and dispatch the edit name action.
-   * Else, display an error message
-   * @return {void}
+   * 1- Capitalize firstName and lastName
+   * 2- Send the edit name request
+   * 3- If request is successful, dispatch the edit name action
+   * @returns {Promise<void>}
    */
-  function handleSubmit() {
+  async function handleSubmit() {
+    let isValid = formValidation();
     if (isValid) {
-      dispatch(EditName(newFirstName, newLastName))
-      setEdit(false)
-    } else {
-      setDisplayError(true)
+      let newFirstName = firstNameInputValue[0].toUpperCase() + firstNameInputValue.substring(1)
+      let newLastName = lastNameInputValue[0].toUpperCase() + lastNameInputValue.substring(1)
+      let response = await sendEditNameRequest(newFirstName, newLastName)
+      if (response.status === 200) {
+        const payload = { newFirstName, newLastName }
+        dispatch(editNameAction(payload))
+        setEdit(false)
+      }
+      else {
+        setDisplayError(true)
+        let message = "Sorry, you are not allowed to do this. Error: " + response.data.message;
+        setErrorMsg(message)
+      }
     }
   }
 
   /**
    * Check if the input fields are valid
-   * If they are : set isValid on true and clear the error message.
-   * If they are not: set isValid on false and set the error message.
-   * @return {void}
+   * If they are not: display an error message.
+   * @return {boolean}
    */
   function formValidation() {
-    setDisplayError(false);
     let regex = /^[a-zA-ZàáâäãåąčćęèéêëėįìíîïłńòóôöõøùúûüųūÿýżźñçčšžÀÁÂÄÃÅĄĆČĖĘÈÉÊËÌÍÎÏĮŁŃÒÓÔÖÕØÙÚÛÜŲŪŸÝŻŹÑßÇŒÆČŠŽ∂ð ,.'-]+$/u;
-    if (newFirstName.match(regex) && newLastName.match(regex)) {
-      setIsValid(true);
-      setErrorMsg("");
-      return;
+    if (firstNameInputValue.match(regex) && lastNameInputValue.match(regex)) {
+      return true;
     }
-    if (!newFirstName || !newLastName) {
-      setErrorMsg("Veuillez renseigner tous les champs");
-    } else {
-      setErrorMsg("Les champs ne peuvent contenir que des lettres");
-    }
-    setIsValid(false);
+    else if (!firstNameInputValue || !lastNameInputValue) { setErrorMsg("Veuillez renseigner tous les champs") }
+    else { setErrorMsg("Les champs ne peuvent contenir que des lettres") }
+    setDisplayError(true);
+    return false;
   }
 
-  /**
-   * Close the form
-   */
-  function handleCancel() {
-    setEdit(false)
-  }
 }
-

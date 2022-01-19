@@ -1,7 +1,7 @@
 import { Link } from "react-router-dom";
 
 export function Account(props) {
-  const { id, name, amount, balance } = props.data;
+  const { id, amount, balance } = props.data;
 
   return (
     <section className="account">
