@@ -1,11 +1,13 @@
 /**
- * Get the state from the local storage
- *
- * @return  {Object}  state from the local storage
+ * Get the state saved in the local storage (or session storage if the user didn't check the remember me checkbox on connection) 
+ * @return  { Object | undefined }
  */
 export const loadState = () => {
   try {
-    const serializedState = localStorage.getItem('state');
+    let serializedState = localStorage.getItem('state');
+    if (serializedState === null) {
+      serializedState = sessionStorage.getItem('state');
+    }
     if (serializedState === null) {
       return undefined;
     }
@@ -14,18 +16,17 @@ export const loadState = () => {
     return undefined
   }
 };
-
 /**
- * Save the state in the local storage
- *
+ * Save the state in the local storage (or session storage if the user didn't check the remember me checkbox on connection) 
  * @param   {Object}  state
- *
  * @return  {void}
  */
 export const saveState = (state) => {
   try {
-    const serializedState = JSON.stringify(state)
-    localStorage.setItem('state', serializedState)
+    const serializedState = JSON.stringify(state);
+    state.auth.rememberMe
+      ? localStorage.setItem('state', serializedState)
+      : sessionStorage.setItem('state', serializedState)
   } catch (err) {
     console.error(err);
   }
