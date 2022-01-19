@@ -1,0 +1,50 @@
+.header {
+  &__nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 5px;
+    &__logo {
+      display: flex;
+      align-items: center;
+      & img {
+        max-width: 100%;
+        width: 180px;
+      }
+    }
+    & a {
+      font-weight: bold;
+      color: #2c3e50;
+      &.router-link-exact-active {
+        color: #42b983;
+      }
+    }
+    &__item {
+      text-decoration: none;
+      margin-right: 0.5rem;
+      &:hover {
+        text-decoration: underline;
+      }
+    }
+  }
+}
+
+.logged-in-nav {
+  display: flex;
+  width: 100%;
+}
+
+@media screen and (min-width: 768px) {
+  .header__nav {
+    padding: 5px 20px;
+    &__logo img {
+      width: 200px;  
+    }
+  }
+  .logged-in-nav {
+    padding-right: 0.5rem;
+    gap: 0.5rem;
+  }
+}
+
+

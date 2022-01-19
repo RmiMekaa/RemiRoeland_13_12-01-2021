@@ -22,14 +22,23 @@
   margin: 0 auto;
   margin-top: 3rem;
   padding: 2rem;
+  & h1 {
+    margin: 1.34rem 0 1.34rem 0;
+  }
 }
 
 .sign-in-icon {
   font-size: 1rem;
 }
 
+.sign-in-errorMsg {
+  color: red;
+  margin-top: 50px;
+}
+
 .input-remember {
   display: flex;
+  margin-bottom: 1rem;
 }
 
 .input-remember label {
@@ -50,6 +59,11 @@
 .input-wrapper input {
   padding: 5px;
   font-size: 1.2rem;
+}
+
+.sign-in-loading {
+  margin-top: 10rem;
+  color: blue;
 }
 
 

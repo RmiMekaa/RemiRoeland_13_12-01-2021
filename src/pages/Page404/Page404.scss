@@ -1,0 +1,15 @@
+.page404 {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  padding: 5rem;
+  & h1 {
+    font-size: 7rem;
+    color:#00BC77;
+  }
+  & p {
+    margin-top: 1rem;
+    font-size: 1.3rem;
+    font-weight: bold;
+  }
+}
