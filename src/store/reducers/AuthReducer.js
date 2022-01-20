@@ -2,7 +2,7 @@ const initialState = {
   loggedIn: false,
   token: undefined,
   rememberMe: false,
-  error: false,
+  error: null,
   loading: false,
 };
 
@@ -40,13 +40,3 @@ export function AuthReducer(state = initialState, action) {
     default: return state;
   }
 }
-
-//Actions types
-const LOGIN_INIT = 'LOGIN_INIT';
-const LOGIN_SUCCESS = 'LOGIN_SUCCESS';
-const LOGIN_FAILED = 'LOGIN_FAILED';
-
-//Action Creators
-export const LoginInitAction = () => ({ type: LOGIN_INIT });
-export const LoginSuccessAction = (payload) => ({ type: LOGIN_SUCCESS, payload: payload });
-export const LoginFailedAction = (payload) => ({ type: LOGIN_FAILED, payload });

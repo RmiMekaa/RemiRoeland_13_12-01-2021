@@ -4,9 +4,8 @@ import { useSelector } from "react-redux";
 import { useDispatch } from "react-redux";
 import { Loader } from "../Loader/Loader";
 import { selectAuthError, selectAuthLoading } from "../../store/selectors";
-import { sendGetProfileRequest, sendLoginRequest } from "../../services/api";
-import { LoginInitAction, LoginFailedAction, LoginSuccessAction } from "../../store/reducers/AuthReducer";
-import { setUserProfileAction } from "../../store/reducers/UserReducer";
+import { login } from "../../store/actions/AuthActions";
+
 
 /**
  * React Component for the login form
@@ -15,11 +14,13 @@ import { setUserProfileAction } from "../../store/reducers/UserReducer";
 export function Login() {
   const error = useSelector(selectAuthError);
   const isLoading = useSelector(selectAuthLoading);
+  const dispatch = useDispatch();
   const [userEmail, setUserEmail] = useState("");
   const [password, setPassword] = useState("");
   const [rememberMe, setRememberMe] = useState(false);
 
-  const dispatch = useDispatch();
+  //Dev only
+  const [selectedUser, setSelectedUser] = useState('Tony Stark');
 
   return (
     <section className="sign-in-content">
@@ -54,27 +55,46 @@ export function Login() {
             />
             <label htmlFor="remember-me">Remember me</label>
           </div>
-          {error ? <span className="sign-in-errorMsg" >Identifiants incorrects</span> : null}
+          {error ? <span className="sign-in-errorMsg" >{error.message}</span> : null}
           <button className="sign-in-button">Sign In</button>
         </form>
       )}
+
+      {/* DEV ONLY ↓ */}
+      <div style={{ marginTop: "2rem", display: "flex", flexDirection: "column" }}>
+        <span>........For development only........</span>
+        <div style={{ height: "30px", marginTop: "0.5rem", display: "flex", justifyContent: "space-between" }}>
+          <select style={{ height: "30px", margin: "0" }} onChange={(e) => setSelectedUser(e.target.value)} id="user-select">
+            <option value='Tony Stark' selected>Tony Stark</option>
+            <option value='Steve Rogers'>Steve Rogers</option>
+          </select>
+          <button style={{ fontSize: "1rem", fontWeight: "bold", width: "40%", backgroundColor: "#00bc77", border: 'none', color: "white" }} onClick={() => autofill(selectedUser)}>Auto Fill</button>
+        </div>
+      </div>
+      {/* DEV ONLY ↑ */}
+
     </section>
   )
 
-  function handleSubmit(e) {
+  async function handleSubmit(e) {
     e.preventDefault();
-    dispatch(LoginInitAction);
-    sendLoginRequest(userEmail, password)
-      .then(res => {
-        const payload = {
-          token: res.body.token,
-          rememberMe: rememberMe
-        }
-        dispatch(LoginSuccessAction(payload))
-      })
-      .catch(error => {
-        console.log(error)
-        dispatch(LoginFailedAction(error))
-      })
+    dispatch(login(userEmail, password, rememberMe))
+  }
+
+  //DEV ONLY
+  function autofill(selectValue) {
+    switch (selectValue) {
+      case 'Tony Stark': {
+        setUserEmail("tony@stark.com")
+        setPassword("password123")
+        break;
+      }
+      case 'Steve Rogers': {
+        setUserEmail("steve@rogers.com")
+        setPassword("password456")
+        break;
+      }
+      default: return;
+    }
   }
 }

@@ -4,7 +4,7 @@ import { useSelector } from "react-redux";
 import { selectUserFirstName, selectUserLastName } from "../../store/selectors";
 import { useState } from "react";
 import { sendEditNameRequest } from "../../services/api";
-import { editNameAction } from "../../store/reducers/UserReducer";
+import { editNameAction } from "../../store/actions/UserActions";
 
 /**
  * React component for the edit name form
@@ -42,7 +42,7 @@ export function EditNameForm(props) {
    * 1- Capitalize firstName and lastName
    * 2- Send the edit name request
    * 3- If request is successful, dispatch the edit name action
-   * @returns {Promise<void>}
+   * @returns {Promise}
    */
   async function handleSubmit() {
     let isValid = formValidation();

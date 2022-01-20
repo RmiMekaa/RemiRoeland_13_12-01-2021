@@ -19,23 +19,30 @@ export function UserReducer(state = initialState, action) {
         lastName: action.payload.newLastName
       }
     }
-    case 'SET_USER_PROFILE': {
+    case 'FETCH_USER_INIT': {
+      return {
+        ...state,
+        loading: true
+      }
+    }
+    case 'FETCH_USER_SUCCESS': {
       return {
         ...state,
         firstName: action.payload.firstName,
         lastName: action.payload.lastName,
         id: action.payload.id,
         email: action.payload.email,
+        loading: false
       }
     }
+    case 'FETCH_USER_FAILED': {
+      return {
+        ...state,
+        error: action.payload,
+        loading: false
+      }
+    }
+
     default: return state;
   }
 }
-
-//Actions types
-export const EDIT_NAME = 'EDIT_NAME';
-export const SET_USER_PROFILE = 'SET_USER_PROFILE';
-
-//Actions Creators
-export const setUserProfileAction = (payload) => ({ type: SET_USER_PROFILE, payload });
-export const editNameAction = (payload) => ({ type: EDIT_NAME, payload });

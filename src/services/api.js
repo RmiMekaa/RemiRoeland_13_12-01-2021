@@ -3,6 +3,9 @@ import store from "../store";
 
 const BaseUrl = 'http://localhost:3001/api/v1';
 
+//DEV ONLY: Header with invalid token to test request error handling
+const configWithInvalideToken = { headers: { Authorization: `Bearer 123` } };
+
 /**
  * Get the token from the state and return pre config auth header for the request
  * @return  {Object}  Request header with the token
@@ -20,13 +23,17 @@ function configAuthHeader() {
  * @return  {Promise}
  */
 export async function sendLoginRequest(email, password) {
-  const config = configAuthHeader();
-  const payload = {
-    email: email,
-    password: password
+  try {
+    const config = configAuthHeader();
+    const payload = {
+      email: email,
+      password: password
+    }
+    const response = await axios.post(BaseUrl + '/user/login', payload, config);
+    return response.data;
+  } catch (err) {
+    return err.response;
   }
-  const res = await axios.post(BaseUrl + '/user/login', payload, config)
-  return res.data;
 }
 
 /**
@@ -64,29 +71,4 @@ export async function sendEditNameRequest(newFirstName, newLastName) {
     return err.response;
   }
 }
-
-/**
- * Send Edit Name request to the API
- * @param   {String}  newFirstName
- * @param   {String}  newFirstName
- * @return  {Promise}
- */
-// export async function sendEditNameRequest(newFirstName, newLastName) {
-//   const config = configAuthHeader();
-//   const payload = {
-//     firstName: newFirstName,
-//     lastName: newLastName,
-//   }
-//   const res = await axios.put(BaseUrl + '/user/profile', payload, config)
-//   return res.data;
-// }
-/**
- * Get the user profile from the API
- * @return  {Promise}
- */
-// export async function sendGetProfileRequest() {
-//   const config = configAuthHeader();
-//   const res = await axios.post(BaseUrl + '/user/profile', {}, config)
-//   return res.data;
-// }
 

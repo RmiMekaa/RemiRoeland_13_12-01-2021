@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 import logo from "../../assets/argentBankLogo.png";
 import { useSelector } from "react-redux";
 import { useDispatch } from "react-redux";
-import { selectAuthLoggedIn, selectUserFirstName } from "../../store/selectors";
+import { selectAuthLoggedIn, selectUserError, selectUserFirstName } from "../../store/selectors";
 
 /**
  * React component for the header
@@ -11,8 +11,9 @@ import { selectAuthLoggedIn, selectUserFirstName } from "../../store/selectors";
  */
 export function Header() {
   const dispatch = useDispatch();
-  const loggedIn = useSelector(selectAuthLoggedIn)
-  const firstName = useSelector(selectUserFirstName)
+  const loggedIn = useSelector(selectAuthLoggedIn);
+  const firstName = useSelector(selectUserFirstName);
+  const userError = useSelector(selectUserError);
 
   return (
     <header className="header">
@@ -24,7 +25,7 @@ export function Header() {
         <div>
           {loggedIn ? (
             <div className="logged-in-nav">
-              <Link to="/profile" className="header__nav__item"><i className="fa fa-user-circle"></i> {firstName} </Link>
+              {userError ? null : <Link to="/profile" className="header__nav__item"><i className="fa fa-user-circle"></i> {firstName} </Link>}
               <Link to="/" className="header__nav__item" onClick={() => dispatch({ type: 'DISCONNECT' })}><i className="fa fa-sign-out"></i> Sign Out</Link>
             </div>
           ) : (
