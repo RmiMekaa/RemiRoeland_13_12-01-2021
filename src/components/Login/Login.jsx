@@ -64,8 +64,8 @@ export function Login() {
       <div style={{ marginTop: "2rem", display: "flex", flexDirection: "column" }}>
         <span>........For development only........</span>
         <div style={{ height: "30px", marginTop: "0.5rem", display: "flex", justifyContent: "space-between" }}>
-          <select style={{ height: "30px", margin: "0" }} onChange={(e) => setSelectedUser(e.target.value)} id="user-select">
-            <option value='Tony Stark' selected>Tony Stark</option>
+          <select style={{ height: "30px", margin: "0" }} defaultValue={'Tony Stark'} onChange={(e) => setSelectedUser(e.target.value)} id="user-select">
+            <option value='Tony Stark'>Tony Stark</option>
             <option value='Steve Rogers'>Steve Rogers</option>
           </select>
           <button style={{ fontSize: "1rem", fontWeight: "bold", width: "40%", backgroundColor: "#00bc77", border: 'none', color: "white" }} onClick={() => autofill(selectedUser)}>Auto Fill</button>

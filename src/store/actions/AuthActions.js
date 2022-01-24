@@ -13,7 +13,7 @@ export const LoginFailedAction = (payload) => ({ type: 'LOGIN_FAILED', payload }
  * @param   {String}  password    Password
  * @param   {Boolean} rememberMe  RememberMe checkbox value
  *
- * @returns ?
+ * @returns {function}
  */
 export function login(userEmail, password, rememberMe) {
   return async (dispatch) => {

@@ -32,7 +32,8 @@ export async function sendLoginRequest(email, password) {
     const response = await axios.post(BaseUrl + '/user/login', payload, config);
     return response.data;
   } catch (err) {
-    return err.response;
+    console.error(err);
+    throw err.response;
   }
 }
 
@@ -46,8 +47,8 @@ export async function sendGetProfileRequest() {
     const response = await axios.post(BaseUrl + '/user/profile', {}, config);
     return response.data;
   } catch (err) {
-    console.log(err);
-    return err.response;
+    console.error(err);
+    throw err.response;
   }
 }
 
@@ -67,8 +68,8 @@ export async function sendEditNameRequest(newFirstName, newLastName) {
     const response = await axios.put(BaseUrl + '/user/profile', payload, config);
     return response.data;
   } catch (err) {
-    console.log(err);
-    return err.response;
+    console.error(err);
+    throw err.response;
   }
 }
 

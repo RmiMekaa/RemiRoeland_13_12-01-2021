@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React from 'react';
 import ReactDOM from 'react-dom';
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 import { HomePage } from './pages/HomePage';
@@ -8,8 +8,6 @@ import { TransactionsPage } from './pages/TransactionsPage/TransactionsPage';
 import { Page404 } from './pages/Page404/Page404';
 import { Header } from './components/Header/Header';
 import { Footer } from './components/Footer/Footer';
-import { ProtectedRoute } from './components/ProtectedRoute/ProtectedRoute';
-
 import './main.scss';
 
 /* 
@@ -22,6 +20,7 @@ REDUX
 */
 import { Provider } from 'react-redux';
 import store from './store/index'
+
 ReactDOM.render(
   <React.StrictMode>
     <Provider store={store}>
@@ -30,7 +29,6 @@ ReactDOM.render(
         <Routes>
           <Route path="/" element={<HomePage />} />
           <Route path="/login" element={<SignInPage />} />
-          {/* <ProtectedRoute exact path='/user' component={UserPage} /> */}
           <Route path="/profile" element={<UserPage />} />
           <Route path="/profile/:accountId/transactions" element={<TransactionsPage />} />
           <Route path='*' element={<Page404 />} />

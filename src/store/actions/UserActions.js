@@ -8,19 +8,18 @@ export const editNameAction = (payload) => ({ type: 'EDIT_NAME', payload });
 
 /**
  * Send get profile request to API then dispatch actions based on the response status 
- *  @returns ?
+ *  @return {Function}
  */
 export function getUserProfile() {
   return async (dispatch) => {
-    dispatch(fetchUserInitAction())
-    const request = await sendGetProfileRequest();
-    console.log(request);
-    if (request.status === 200) {
+    try {
+      dispatch(fetchUserInitAction())
+      const request = await sendGetProfileRequest();
       dispatch(fetchUserSuccessAction(request.body))
     }
-    else {
-      console.log(request.data);
-      dispatch(fetchUserFailedAction(request.data))
+    catch (err) {
+      console.error(err);
+      dispatch(fetchUserFailedAction(err))
     }
   }
 }

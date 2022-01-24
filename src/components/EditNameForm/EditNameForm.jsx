@@ -47,8 +47,8 @@ export function EditNameForm(props) {
   async function handleSubmit() {
     let isValid = formValidation();
     if (isValid) {
-      let newFirstName = firstNameInputValue[0].toUpperCase() + firstNameInputValue.substring(1)
-      let newLastName = lastNameInputValue[0].toUpperCase() + lastNameInputValue.substring(1)
+      let newFirstName = firstNameInputValue[0].toUpperCase() + firstNameInputValue.substring(1);
+      let newLastName = lastNameInputValue[0].toUpperCase() + lastNameInputValue.substring(1);
       let response = await sendEditNameRequest(newFirstName, newLastName)
       if (response.status === 200) {
         const payload = { newFirstName, newLastName }
