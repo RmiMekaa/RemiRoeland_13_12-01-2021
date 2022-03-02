@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect } from "react";
 import { useSelector } from "react-redux";
 import { UserHeader } from "../../components/UserHeader/UserHeader";
 import { Account } from "../../components/Account/Account";
@@ -27,9 +27,8 @@ export function UserPage() {
     }
   }, [dispatch, token])
 
-  if (!isLoggedIn) { return <Navigate to='/login' /> }
-
-  if (fetchingProfile) { return <Loader /> }
+  if (!isLoggedIn) return <Navigate to='/login' />
+  if (fetchingProfile) return <Loader />
 
   if (fetchingProfileError) {
     return (
@@ -37,7 +36,7 @@ export function UserPage() {
         <h2>Oops...</h2>
         <p>
           Failed to retrieve profile, please try again later <br />
-          <span>Error: {fetchingProfileError.data.message}</span>
+          <span>Error: {fetchingProfileError.statusText}</span>
         </p>
       </div>
     )

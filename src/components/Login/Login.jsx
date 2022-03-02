@@ -6,7 +6,6 @@ import { Loader } from "../Loader/Loader";
 import { selectAuthError, selectAuthLoading } from "../../store/selectors";
 import { login } from "../../store/actions/AuthActions";
 
-
 /**
  * React Component for the login form
  * @component
@@ -55,7 +54,7 @@ export function Login() {
             />
             <label htmlFor="remember-me">Remember me</label>
           </div>
-          {error ? <span className="sign-in-errorMsg" >{error.message}</span> : null}
+          {error ? <span className="sign-in-errorMsg" >{error}</span> : null}
           <button className="sign-in-button">Sign In</button>
         </form>
       )}
@@ -76,7 +75,7 @@ export function Login() {
     </section>
   )
 
-  async function handleSubmit(e) {
+  function handleSubmit(e) {
     e.preventDefault();
     dispatch(login(userEmail, password, rememberMe))
   }
