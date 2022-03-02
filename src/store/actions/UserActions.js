@@ -1,25 +1,37 @@
-import { sendGetProfileRequest } from "../../services/api";
-
-//Actions Creators
-export const fetchUserInitAction = () => ({ type: 'FETCH_USER_INIT' });
-export const fetchUserSuccessAction = (payload) => ({ type: 'FETCH_USER_SUCCESS', payload });
-export const fetchUserFailedAction = (payload) => ({ type: 'FETCH_USER_FAILED', payload });
-export const editNameAction = (payload) => ({ type: 'EDIT_NAME', payload });
+import { sendGetProfileRequest, sendEditNameRequest } from "../../services/api";
 
 /**
  * Send get profile request to API then dispatch actions based on the response status 
- *  @return {Function}
+ *  @return {Function} dispatch
  */
 export function getUserProfile() {
   return async (dispatch) => {
-    try {
-      dispatch(fetchUserInitAction())
-      const request = await sendGetProfileRequest();
-      dispatch(fetchUserSuccessAction(request.body))
+    dispatch({ type: 'FETCH_USER_INIT' })
+    const response = await sendGetProfileRequest();
+    if (response.status === 200) {
+      dispatch({ type: 'FETCH_USER_SUCCESS', payload: response.body })
     }
-    catch (err) {
-      console.error(err);
-      dispatch(fetchUserFailedAction(err))
+    else {
+      dispatch({ type: 'FETCH_USER_FAILED', payload: response })
+    }
+  }
+}
+
+/**
+ *  Send edit name request to API then dispatch actions based on the response status 
+ *  @param  {string}  newFirstName
+ *  @param  {string}  newLastName
+ *  @return {Function} dispatch
+ */
+export function editName(newFirstName, newLastName) {
+  return async (dispatch) => {
+    dispatch({ type: 'EDIT_NAME_INIT' })
+    const response = await sendEditNameRequest(newFirstName, newLastName)
+    if (response.status === 200) {
+      dispatch({ type: 'EDIT_NAME_SUCCESS', payload: response.body })
+    }
+    else {
+      dispatch({ type: 'EDIT_NAME_FAILED', payload: response })
     }
   }
 }
