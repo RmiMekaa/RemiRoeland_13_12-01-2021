@@ -24,16 +24,18 @@ function configAuthHeader() {
  */
 export async function sendLoginRequest(email, password) {
   try {
-    const config = configAuthHeader();
     const payload = {
       email: email,
       password: password
     }
-    const response = await axios.post(BaseUrl + '/user/login', payload, config);
+    const response = await axios.post(BaseUrl + '/user/login', payload);
     return response.data;
   } catch (err) {
     console.error(err);
-    throw err.response;
+    if (err.response.status === 404) {
+      return "Network error : " + err.response.status + " " + err.response.statusText;
+    }
+    return err.response.data.message;
   }
 }
 
@@ -47,8 +49,8 @@ export async function sendGetProfileRequest() {
     const response = await axios.post(BaseUrl + '/user/profile', {}, config);
     return response.data;
   } catch (err) {
-    console.error(err);
-    throw err.response;
+    console.log(err);
+    return err.response;
   }
 }
 
@@ -69,7 +71,7 @@ export async function sendEditNameRequest(newFirstName, newLastName) {
     return response.data;
   } catch (err) {
     console.error(err);
-    throw err.response;
+    return err.response;
   }
 }
 
