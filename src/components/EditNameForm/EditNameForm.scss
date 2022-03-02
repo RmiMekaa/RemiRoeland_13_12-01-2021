@@ -1,4 +1,5 @@
 .editNameForm {
+  position: relative;
   width: 100%;
   display: flex;
   flex-direction: column;
@@ -24,6 +25,11 @@
       height: 2rem;
       width: 300px;
     }
+  }
+  & .errorMsg {
+    position: absolute;
+    color: red;
+    top: -1rem;
   }
 }  
 
