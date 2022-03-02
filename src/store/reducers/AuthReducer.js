@@ -1,6 +1,6 @@
 const initialState = {
   loggedIn: false,
-  token: undefined,
+  token: null,
   rememberMe: false,
   error: null,
   loading: false,
@@ -37,6 +37,7 @@ export function AuthReducer(state = initialState, action) {
         loading: false
       }
     }
+    case 'DISCONNECT': return initialState;
     default: return state;
   }
 }

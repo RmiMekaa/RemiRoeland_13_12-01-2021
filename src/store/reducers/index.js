@@ -9,11 +9,7 @@ const appReducer = combineReducers({
 
 //Reset the state if the disconnect action is dispatched
 const rootReducer = (state, action) => {
-  if (action.type === 'DISCONNECT') {
-    localStorage.removeItem('state');
-    sessionStorage.removeItem('state');
-    return appReducer(undefined, action)
-  }
+  if (action.type === 'DISCONNECT') localStorage.removeItem('state');
   return appReducer(state, action)
 }
 

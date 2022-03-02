@@ -1,8 +1,10 @@
 const initialState = {
-  firstName: undefined,
-  lastName: undefined,
-  id: undefined,
-  email: undefined
+  firstName: null,
+  lastName: null,
+  id: null,
+  email: null,
+  loading: null,
+  error: null,
 };
 
 /**
@@ -12,11 +14,26 @@ const initialState = {
  */
 export function UserReducer(state = initialState, action) {
   switch (action.type) {
-    case 'EDIT_NAME': {
+    case 'EDIT_NAME_INIT': {
       return {
         ...state,
-        firstName: action.payload.newFirstName,
-        lastName: action.payload.newLastName
+        loading: true,
+        error: null,
+      }
+    }
+    case 'EDIT_NAME_SUCCESS': {
+      return {
+        ...state,
+        firstName: action.payload.firstName,
+        lastName: action.payload.lastName,
+        loading: false,
+      }
+    }
+    case 'EDIT_NAME_FAILED': {
+      return {
+        ...state,
+        loading: false,
+        error: action.payload
       }
     }
     case 'FETCH_USER_INIT': {
@@ -42,7 +59,7 @@ export function UserReducer(state = initialState, action) {
         loading: false
       }
     }
-
+    case 'DISCONNECT': return initialState;
     default: return state;
   }
 }
