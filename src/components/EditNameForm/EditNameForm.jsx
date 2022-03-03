@@ -12,7 +12,7 @@ export function EditNameForm() {
   const firstName = useSelector(selectUserFirstName)
   const lastName = useSelector(selectUserLastName)
   const loading = useSelector(selectUserLoading)
-  const error = useSelector(selectEditError)
+  const editRequestError = useSelector(selectEditError)
 
   const [newFirstName, setNewFirstName] = useState(firstName);
   const [newLastName, setNewLastName] = useState(lastName);
@@ -24,7 +24,7 @@ export function EditNameForm() {
     <div className="editNameForm">
       {loading ? <Loader /> : (
         <>
-          {validationError || error ? <span className="errorMsg">{validationError ? validationError : error}</span> : null}
+          {validationError || editRequestError ? <span className="errorMsg">{validationError ? validationError : editRequestError}</span> : null}
           <div className="editNameForm__inputs">
             <input className="editNameForm__inputs__input" placeholder={newFirstName} onChange={(e) => setNewFirstName(e.target.value)} />
             <input className="editNameForm__inputs__input" placeholder={newLastName} onChange={(e) => setNewLastName(e.target.value)} />
