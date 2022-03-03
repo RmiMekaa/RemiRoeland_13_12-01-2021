@@ -4,7 +4,8 @@ const initialState = {
   id: null,
   email: null,
   loading: null,
-  error: null,
+  editError: null,
+  displayEditForm: null,
 };
 
 /**
@@ -14,11 +15,24 @@ const initialState = {
  */
 export function UserReducer(state = initialState, action) {
   switch (action.type) {
+    case 'OPEN_FORM': {
+      return {
+        ...state,
+        displayEditForm: true,
+        editError: null
+      }
+    }
+    case 'CLOSE_FORM': {
+      return {
+        ...state,
+        displayEditForm: false
+      }
+    }
     case 'EDIT_NAME_INIT': {
       return {
         ...state,
         loading: true,
-        error: null,
+        editError: null,
       }
     }
     case 'EDIT_NAME_SUCCESS': {
@@ -27,13 +41,14 @@ export function UserReducer(state = initialState, action) {
         firstName: action.payload.firstName,
         lastName: action.payload.lastName,
         loading: false,
+        displayEditForm: false
       }
     }
     case 'EDIT_NAME_FAILED': {
       return {
         ...state,
         loading: false,
-        error: action.payload
+        editError: action.payload
       }
     }
     case 'FETCH_USER_INIT': {
