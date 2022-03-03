@@ -14,7 +14,7 @@ export function Login() {
   const error = useSelector(selectAuthError);
   const isLoading = useSelector(selectAuthLoading);
   const dispatch = useDispatch();
-  const [userEmail, setUserEmail] = useState("");
+  const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [rememberMe, setRememberMe] = useState(false);
 
@@ -32,8 +32,8 @@ export function Login() {
             <input
               type="text"
               id="username"
-              value={userEmail}
-              onChange={(e) => setUserEmail(e.target.value)}
+              value={email}
+              onChange={(e) => setEmail(e.target.value)}
             />
           </div>
           <div className="input-wrapper">
@@ -75,21 +75,20 @@ export function Login() {
     </section>
   )
 
-  function handleSubmit(e) {
-    e.preventDefault();
-    dispatch(login(userEmail, password, rememberMe))
+  function handleSubmit() {
+    dispatch(login(email, password, rememberMe))
   }
 
   //DEV ONLY
   function autofill(selectValue) {
     switch (selectValue) {
       case 'Tony Stark': {
-        setUserEmail("tony@stark.com")
+        setEmail("tony@stark.com")
         setPassword("password123")
         break;
       }
       case 'Steve Rogers': {
-        setUserEmail("steve@rogers.com")
+        setEmail("steve@rogers.com")
         setPassword("password456")
         break;
       }

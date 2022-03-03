@@ -36,7 +36,7 @@ export function UserPage() {
         <h2>Oops...</h2>
         <p>
           Failed to retrieve profile, please try again later <br />
-          <span>Error: {fetchingProfileError.statusText}</span>
+          <span>Error: {fetchingProfileError}</span>
         </p>
       </div>
     )
