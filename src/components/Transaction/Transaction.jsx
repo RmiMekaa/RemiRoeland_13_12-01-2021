@@ -2,6 +2,11 @@ import React, { useState } from "react";
 import arrowIcon from '../../assets/arrowIcon.png';
 import editIcon from '../../assets/editIcon.png';
 
+/**
+ * React component for transaction
+ * @param {*} props 
+ * @returns 
+ */
 export function Transaction(props) {
   const { date, description, amount, balance, type, category, notes } = props.data;
   const [editCategory, setEditCategory] = useState(false);

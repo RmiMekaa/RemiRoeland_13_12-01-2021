@@ -1,6 +1,10 @@
 import React from 'react';
 import { FeatureCard } from '../FeatureCard/FeatureCard';
 
+/**
+ * React component for the features section
+ * @component 
+ */
 export function Features() {
   return (
     <section className='features'>
