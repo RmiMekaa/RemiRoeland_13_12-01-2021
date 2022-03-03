@@ -33,7 +33,7 @@ export async function sendLoginRequest(email, password) {
   } catch (err) {
     console.error(err);
     if (err.response.status === 404) {
-      return "Network error : " + err.response.status + " " + err.response.statusText;
+      return "Sorry, the service is unavailable at the moment";
     }
     return err.response.data.message;
   }
@@ -41,7 +41,7 @@ export async function sendLoginRequest(email, password) {
 
 /**
  * Get the user profile from the API
- * @return  {Promise} If success, return data. Else, return the error
+ * @return  {Promise} If success, return data. Else, return an error message
  */
 export async function sendGetProfileRequest() {
   try {
@@ -50,7 +50,10 @@ export async function sendGetProfileRequest() {
     return response.data;
   } catch (err) {
     console.log(err);
-    return err.response;
+    if (err.response.status === 404) {
+      return "Sorry, your profile didn`t load properly. Please try again";
+    }
+    return err.response.status + " " + err.response.statusText;
   }
 }
 
@@ -58,7 +61,7 @@ export async function sendGetProfileRequest() {
  * Send Edit Name request to the API
  * @param   {String}  newFirstName
  * @param   {String}  newFirstName
- * @return  {Promise}  If success, return data. Else, return the error
+ * @return  {Promise}  If success, return data. Else, return an error message
  */
 export async function sendEditNameRequest(newFirstName, newLastName) {
   try {
@@ -71,7 +74,10 @@ export async function sendEditNameRequest(newFirstName, newLastName) {
     return response.data;
   } catch (err) {
     console.error(err);
-    return err.response;
+    if (err.response.status === 404) {
+      return "Sorry, the service is unavailable at the moment";
+    }
+    console.log(err.response);
+    return err.response.status + " " + err.response.statusText;
   }
 }
-
