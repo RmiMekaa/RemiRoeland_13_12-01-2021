@@ -24,9 +24,11 @@ export function getUserProfile() {
  *  @return {Function} dispatch
  */
 export function editName(newFirstName, newLastName) {
+  let firstName = newFirstName[0].toUpperCase() + newFirstName.substring(1);
+  let lastName = newLastName[0].toUpperCase() + newLastName.substring(1);
   return async (dispatch) => {
     dispatch({ type: 'EDIT_NAME_INIT' })
-    const response = await sendEditNameRequest(newFirstName, newLastName)
+    const response = await sendEditNameRequest(firstName, lastName)
     if (response.status === 200) {
       dispatch({ type: 'EDIT_NAME_SUCCESS', payload: response.body })
     }
