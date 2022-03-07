@@ -1,4 +1,5 @@
 import axios from "axios";
+import store from "../store";
 
 axios.defaults.baseURL = 'http://localhost:3001/api/v1';
 
@@ -25,8 +26,9 @@ const paths = {
  */
 export async function sendApiRequest(type, payload = {}) {
   const { src, method } = paths[type];
+  const config = { headers: { Authorization: `Bearer ${store.getState().auth.token}` }};
   try {
-    const response = await axios[method](src, payload);
+    const response = await axios[method](src, payload, config);
     return response.data;
   } catch (err) {
     if (err.response.status === 404) return "Sorry, the service is unavailable at the moment";

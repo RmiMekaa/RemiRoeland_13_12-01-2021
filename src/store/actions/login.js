@@ -1,5 +1,4 @@
 import { sendApiRequest } from "../../services/api";
-import axios from "axios";
 
 /**
  * Send login request to API then dispatch actions based on the response status
@@ -18,8 +17,6 @@ export function login(email, password, rememberMe) {
     }
     const response = await sendApiRequest('login', payload);
     if (response.status === 200) {
-
-      axios.defaults.headers.common['Authorization'] = "Bearer " + response.body.token;
       dispatch({
         type: 'LOGIN_SUCCESS',
         payload: {
