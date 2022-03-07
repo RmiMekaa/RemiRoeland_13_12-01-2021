@@ -12,6 +12,9 @@ export function Transaction(props) {
   const [editCategory, setEditCategory] = useState(false);
   const [editNotes, setEditNotes] = useState(false);
 
+  const [newCategory, setNewCategory] = useState(null);
+  const [newNotes, setNewNotes] = useState(null);
+
   return (
     <details className="transaction">
       <summary className="transaction__resume">
@@ -31,7 +34,10 @@ export function Transaction(props) {
         <li className="transaction__infos__category">
           Category:
           {editCategory ? (
-            <select onChange={() => setEditCategory(false)}>
+            <select onChange={(e) => {
+              setNewCategory(e.target.value); 
+              setEditCategory(false)
+            }}>
               <option value="Food">Food</option>
               <option value="Shopping">Shopping</option>
               <option value="Medical">Medical</option>
@@ -40,7 +46,7 @@ export function Transaction(props) {
             </select>
           ) : (
             <span>
-              {category}
+              {newCategory ? newCategory : category}
               <img className="editIcon" src={editIcon} alt='' onClick={() => setEditCategory(true)} />
             </span>
           )
@@ -50,12 +56,12 @@ export function Transaction(props) {
           Notes:
           {editNotes ? (
             <div className="edit-notes">
-              <textarea rows="5"></textarea>
+              <textarea rows="5" onChange={(e) => setNewNotes(e.target.value)}></textarea>
               <button onClick={() => setEditNotes(false)}>OK</button>
             </div>
           ) : (
             <span>
-              {notes}
+              {newNotes ? newNotes : notes}
               <img className="editIcon" src={editIcon} alt='' onClick={() => setEditNotes(true)} />
             </span>
           )
