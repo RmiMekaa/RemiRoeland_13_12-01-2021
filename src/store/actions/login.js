@@ -16,20 +16,18 @@ export function login(email, password, rememberMe) {
       password: password
     }
     const response = await sendApiRequest('login', payload);
-    if (response.status === 200) {
-      dispatch({
-        type: 'LOGIN_SUCCESS',
-        payload: {
-          token: response.body.token,
-          rememberMe: rememberMe
-        }
-      });
-    }
-    else {
-      dispatch({
+    if (response.status !== 200) {
+      return dispatch({
         type: 'LOGIN_FAILED',
         payload: response
       });
     }
+    dispatch({
+      type: 'LOGIN_SUCCESS',
+      payload: {
+        token: response.body.token,
+        rememberMe: rememberMe
+      }
+    });
   }
 }
