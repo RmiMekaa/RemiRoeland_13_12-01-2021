@@ -52,6 +52,10 @@
     text-decoration: none;
     color: #fff;
   }
+  &:hover {
+    background-color: #07cc84;
+    border-color: #07cc84;
+  }
 }
 
 @media (min-width: 720px) {
