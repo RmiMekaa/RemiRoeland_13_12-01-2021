@@ -8,6 +8,7 @@ import { Loader } from "../../components/Loader/Loader";
 import { Navigate } from "react-router-dom";
 import jwtDecode from "jwt-decode";
 import { useDispatch } from "react-redux";
+import { getUserProfile } from "../../store/actions/getUserProfile";
 
 export function UserPage() {
   const isLoggedIn = useSelector(selectAuthLoggedIn)
@@ -17,8 +18,10 @@ export function UserPage() {
   const accounts = accountsMockData; //Accounts data mock
   const dispatch = useDispatch()
 
-  //As this page is a private route, we have to check the token expiration date and disconnect the user if it's expired
+
   useEffect(() => {
+    dispatch(getUserProfile())
+    //As this page is a private route, we have to check the token expiration date and disconnect the user if it's expired
     if (token) {
       const decodedToken = jwtDecode(token);
       if (decodedToken.exp * 1000 < new Date().getTime()) {
