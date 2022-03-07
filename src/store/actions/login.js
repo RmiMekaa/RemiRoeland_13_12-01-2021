@@ -1,5 +1,5 @@
-import { sendLoginRequest } from "../../services/api";
-import { getUserProfile } from "./UserActions";
+import { sendApiRequest } from "../../services/api";
+import axios from "axios";
 
 /**
  * Send login request to API then dispatch actions based on the response status
@@ -9,11 +9,17 @@ import { getUserProfile } from "./UserActions";
  *
  * @returns {function}
  */
-export function login(userEmail, password, rememberMe) {
+export function login(email, password, rememberMe) {
   return async (dispatch) => {
     dispatch({ type: 'LOGIN_INIT' });
-    const response = await sendLoginRequest(userEmail, password);
+    const payload = {
+      email: email,
+      password: password
+    }
+    const response = await sendApiRequest('login', payload);
     if (response.status === 200) {
+
+      axios.defaults.headers.common['Authorization'] = "Bearer " + response.body.token;
       dispatch({
         type: 'LOGIN_SUCCESS',
         payload: {
@@ -21,11 +27,12 @@ export function login(userEmail, password, rememberMe) {
           rememberMe: rememberMe
         }
       });
-      dispatch(getUserProfile());
     }
     else {
-      console.log(response);
-      dispatch({ type: 'LOGIN_FAILED', payload: response });
+      dispatch({
+        type: 'LOGIN_FAILED',
+        payload: response
+      });
     }
   }
 }
