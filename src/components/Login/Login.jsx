@@ -4,7 +4,7 @@ import { useSelector } from "react-redux";
 import { useDispatch } from "react-redux";
 import { Loader } from "../Loader/Loader";
 import { selectAuthError, selectAuthLoading } from "../../store/selectors";
-import { login } from "../../store/actions/AuthActions";
+import { login } from "../../store/actions/login";
 
 /**
  * React Component for the login form
@@ -67,7 +67,7 @@ export function Login() {
             <option value='Tony Stark'>Tony Stark</option>
             <option value='Steve Rogers'>Steve Rogers</option>
           </select>
-          <button style={{ fontSize: "1rem", fontWeight: "bold", width: "40%", backgroundColor: "#00bc77", border: 'none', color: "white" }} onClick={() => autofill(selectedUser)}>Auto Fill</button>
+          <button style={{ cursor: "pointer", fontSize: "1rem", fontWeight: "bold", width: "40%", backgroundColor: "#00bc77", border: 'none', color: "white" }} onClick={() => autofill(selectedUser)}>Auto Fill</button>
         </div>
       </div>
       {/* DEV ONLY ↑ */}
