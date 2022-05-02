@@ -2,7 +2,7 @@ import { sendApiRequest } from "../../services/api";
 
 /**
  * Send login request to API then dispatch actions based on the response status
- * @param   {String}  userEmail   User email
+ * @param   {String}  email   User email
  * @param   {String}  password    Password
  * @param   {Boolean} rememberMe  RememberMe checkbox value
  *
