@@ -1,5 +1,5 @@
 import React, { useEffect } from "react";
-import { useSelector } from "react-redux";
+import { useSelector, useDispatch } from "react-redux";
 import { UserHeader } from "../../components/UserHeader/UserHeader";
 import { Account } from "../../components/Account/Account";
 import { accountsMockData } from "../../mocks/accounts";
@@ -7,7 +7,6 @@ import { selectAuthLoggedIn, selectAuthToken, selectUserError, selectUserLoading
 import { Loader } from "../../components/Loader/Loader";
 import { Navigate } from "react-router-dom";
 import jwtDecode from "jwt-decode";
-import { useDispatch } from "react-redux";
 import { getUserProfile } from "../../store/actions/getUserProfile";
 
 export function UserPage() {
