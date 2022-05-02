@@ -25,7 +25,8 @@
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
-    "eject": "react-scripts eject"
+    "eject": "react-scripts eject",
+    "jsdoc": "npx jsdoc -c ./jsdocConfig.json"
   },
   "eslintConfig": {
     "extends": [
