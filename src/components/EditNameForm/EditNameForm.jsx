@@ -24,7 +24,8 @@ export function EditNameForm() {
     <div className="editNameForm">
       {loading ? <Loader /> : (
         <>
-          {validationError || editRequestError ? <span className="errorMsg">{validationError ? validationError : editRequestError}</span> : null}
+          {validationError ? <span className="errorMsg">{validationError}</span> : null}
+          {editRequestError ? <span className="errorMsg">{editRequestError}</span> : null}
           <div className="editNameForm__inputs">
             <input className="editNameForm__inputs__input" placeholder={newFirstName} onChange={(e) => setNewFirstName(e.target.value)} />
             <input className="editNameForm__inputs__input" placeholder={newLastName} onChange={(e) => setNewLastName(e.target.value)} />
@@ -38,6 +39,7 @@ export function EditNameForm() {
     </div>
   )
 
+
   /**
    * Handle form submission.
    * - If new name format is valid, dispatch the editName action
@@ -46,7 +48,7 @@ export function EditNameForm() {
    */
   function handleSubmit() {
     if (!newFirstName || !newLastName) return setValidationError("Veuillez renseigner tous les champs")
-    let regex = /^[a-zA-ZàáâäãåąčćęèéêëėįìíîïłńòóôöõøùúûüųūÿýżźñçčšžÀÁÂÄÃÅĄĆČĖĘÈÉÊËÌÍÎÏĮŁŃÒÓÔÖÕØÙÚÛÜŲŪŸÝŻŹÑßÇŒÆČŠŽ∂ð,.'-]+$/u;
+    let regex = /^[a-z ,.'-]+$/i;
     let isValid = (newFirstName.match(regex) && newLastName.match(regex)) ? true : false;
     if (isValid) {
       dispatch(editName(newFirstName, newLastName))
