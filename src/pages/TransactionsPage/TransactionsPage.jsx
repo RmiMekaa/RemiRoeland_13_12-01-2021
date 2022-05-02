@@ -7,11 +7,7 @@ export function TransactionsPage() {
 
   // Mock Data
   const { accountId } = useParams();
-  let account = {}
-
-  accountsMockData.forEach(acc => {
-    if (acc.id === accountId) return account = acc;
-  })
+  let account = accountsMockData.find(acc => acc.id === accountId);
 
   return (
     <main className="transactionsPage">
