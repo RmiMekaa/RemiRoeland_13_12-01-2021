@@ -1,8 +1,6 @@
-import { createStore } from 'redux'
-import { saveState } from './localStorage'
-import { loadState } from './localStorage'
+import { createStore, applyMiddleware } from 'redux'
+import { saveState, loadState } from './localStorage'
 import { composeWithDevTools } from 'redux-devtools-extension';
-import { applyMiddleware } from 'redux'
 import thunk from 'redux-thunk'
 import throttle from 'lodash.throttle'
 import rootReducer from './reducers'
