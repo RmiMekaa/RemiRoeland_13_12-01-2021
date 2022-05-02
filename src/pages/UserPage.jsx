@@ -1,13 +1,13 @@
 import React, { useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
-import { UserHeader } from "../../components/UserHeader/UserHeader";
-import { Account } from "../../components/Account/Account";
-import { accountsMockData } from "../../mocks/accounts";
-import { selectAuthLoggedIn, selectAuthToken, selectUserError, selectUserLoading } from "../../store/selectors";
-import { Loader } from "../../components/Loader/Loader";
+import { UserHeader } from "../components/UserHeader";
+import { Account } from "../components/Account";
+import { accountsMockData } from "../mocks/accounts";
+import { selectAuthLoggedIn, selectAuthToken, selectUserError, selectUserLoading } from "../store/selectors";
+import { Loader } from "../components/Loader";
 import { Navigate } from "react-router-dom";
 import jwtDecode from "jwt-decode";
-import { getUserProfile } from "../../store/actions/getUserProfile";
+import { getUserProfile } from "../store/actions/getUserProfile";
 
 export function UserPage() {
   const isLoggedIn = useSelector(selectAuthLoggedIn)

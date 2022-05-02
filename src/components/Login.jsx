@@ -1,8 +1,8 @@
 import React, { useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
-import { Loader } from "../Loader/Loader";
-import { selectAuthError, selectAuthLoading } from "../../store/selectors";
-import { login } from "../../store/actions/login";
+import { Loader } from "./Loader";
+import { selectAuthError, selectAuthLoading } from "../store/selectors";
+import { login } from "../store/actions/login";
 
 /**
  * React Component for the login form

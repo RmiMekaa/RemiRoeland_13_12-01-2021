@@ -1,7 +1,7 @@
 import React from "react";
-import { EditNameForm } from "../EditNameForm/EditNameForm";
+import { EditNameForm } from "./EditNameForm";
 import { useSelector, useDispatch } from "react-redux";
-import { selectUserFirstName, selectUserLastName, selectDisplayEditForm } from "../../store/selectors";
+import { selectUserFirstName, selectUserLastName, selectDisplayEditForm } from "../store/selectors";
 
 /**
  * React component for the user header on the profile page

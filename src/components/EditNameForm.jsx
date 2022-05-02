@@ -1,8 +1,8 @@
 import React, { useState } from "react"
 import { useDispatch, useSelector } from "react-redux";
-import { selectEditError, selectUserFirstName, selectUserLastName, selectUserLoading } from "../../store/selectors";
-import { editName } from "../../store/actions/editName";
-import { Loader } from "../Loader/Loader";
+import { selectEditError, selectUserFirstName, selectUserLastName, selectUserLoading } from "../store/selectors";
+import { editName } from "../store/actions/editName";
+import { Loader } from "./Loader";
 
 /**
  * React component for the edit name form

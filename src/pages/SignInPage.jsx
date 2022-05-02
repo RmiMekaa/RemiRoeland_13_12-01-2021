@@ -1,8 +1,8 @@
 import React from 'react';
 import { Navigate } from 'react-router-dom';
-import { Login } from '../../components/Login/Login';
+import { Login } from '../components/Login';
 import { useSelector } from 'react-redux';
-import { selectAuthLoggedIn } from '../../store/selectors';
+import { selectAuthLoggedIn } from '../store/selectors';
 
 /**
  * React Component for the login page

@@ -1,5 +1,5 @@
 import React from 'react';
-import { FeatureCard } from '../FeatureCard/FeatureCard';
+import { FeatureCard } from './FeatureCard';
 
 /**
  * React component for the features section

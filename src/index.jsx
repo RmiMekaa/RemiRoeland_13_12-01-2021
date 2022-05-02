@@ -2,13 +2,13 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 import { HomePage } from './pages/HomePage';
-import { SignInPage } from './pages/SignInPage/SignInPage';
-import { UserPage } from './pages/UserPage/UserPage';
-import { TransactionsPage } from './pages/TransactionsPage/TransactionsPage';
-import { Page404 } from './pages/Page404/Page404';
-import { Header } from './components/Header/Header';
-import { Footer } from './components/Footer/Footer';
-import './main.scss';
+import { SignInPage } from './pages/SignInPage';
+import { UserPage } from './pages/UserPage';
+import { TransactionsPage } from './pages/TransactionsPage';
+import { Page404 } from './pages/Page404';
+import { Header } from './components/Header';
+import { Footer } from './components/Footer';
+import './style/main.scss';
 
 /* 
 REDUX

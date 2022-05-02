@@ -1,6 +1,6 @@
 import React, { useState } from "react";
-import arrowIcon from '../../assets/arrowIcon.png';
-import editIcon from '../../assets/editIcon.png';
+import arrowIcon from '../assets/arrowIcon.png';
+import editIcon from '../assets/editIcon.png';
 
 /**
  * React component for transaction

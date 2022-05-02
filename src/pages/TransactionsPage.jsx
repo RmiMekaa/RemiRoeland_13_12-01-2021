@@ -1,6 +1,6 @@
 import React from "react";
-import { Transaction } from "../../components/Transaction/Transaction";
-import { accountsMockData } from "../../mocks/accounts";
+import { Transaction } from "../components/Transaction";
+import { accountsMockData } from "../mocks/accounts";
 import { useParams } from "react-router-dom";
 
 export function TransactionsPage() {
