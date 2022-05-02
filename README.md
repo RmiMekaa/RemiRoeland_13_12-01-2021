@@ -7,8 +7,6 @@
 [![Security Rating](https://sonarcloud.io/api/project_badges/measure?project=RmiMekaa_RemiRoeland_13_12-01-2021&metric=security_rating)](https://sonarcloud.io/summary/new_code?id=RmiMekaa_RemiRoeland_13_12-01-2021)  
 [![Lines of Code](https://sonarcloud.io/api/project_badges/measure?project=RmiMekaa_RemiRoeland_13_12-01-2021&metric=ncloc)](https://sonarcloud.io/summary/new_code?id=RmiMekaa_RemiRoeland_13_12-01-2021)
 [![Bugs](https://sonarcloud.io/api/project_badges/measure?project=RmiMekaa_RemiRoeland_13_12-01-2021&metric=bugs)](https://sonarcloud.io/summary/new_code?id=RmiMekaa_RemiRoeland_13_12-01-2021)
-[![Code Smells](https://sonarcloud.io/api/project_badges/measure?project=RmiMekaa_RemiRoeland_13_12-01-2021&metric=code_smells)](https://sonarcloud.io/summary/new_code?id=RmiMekaa_RemiRoeland_13_12-01-2021)
-[![Technical Debt](https://sonarcloud.io/api/project_badges/measure?project=RmiMekaa_RemiRoeland_13_12-01-2021&metric=sqale_index)](https://sonarcloud.io/summary/new_code?id=RmiMekaa_RemiRoeland_13_12-01-2021)
 [![Vulnerabilities](https://sonarcloud.io/api/project_badges/measure?project=RmiMekaa_RemiRoeland_13_12-01-2021&metric=vulnerabilities)](https://sonarcloud.io/summary/new_code?id=RmiMekaa_RemiRoeland_13_12-01-2021)
 
 ## Project objectives
@@ -32,6 +30,10 @@
 1. Clone this repository
 2. Install dependencies: ```npm install```
 3. Launch the App: ```npm start```
+
+4. Install and launch the delivered [API](https://github.com/OpenClassrooms-Student-Center/Project-10-Bank-API) to access to the database and test the app.
+
+------------------
 
 Hope it helps !
 
