@@ -14,6 +14,21 @@ export function Header() {
   const firstName = useSelector(selectUserFirstName);
   const userError = useSelector(selectUserError);
 
+  const UserError = () => {
+    return userError ? null : <Link to="/profile" className="header__nav__item"><i className="fa fa-user-circle"></i> {firstName} </Link>
+  }
+
+  const SignInButton = () => {
+    return loggedIn ? (
+      <div className="logged-in-nav">
+        <UserError />
+        <Link to="/" className="header__nav__item" onClick={() => dispatch({ type: 'DISCONNECT' })}><i className="fa fa-sign-out"></i> Sign Out</Link>
+      </div>
+    ) : (
+      <Link to="/login" className="header__nav__item" ><i className="fa fa-user-circle"></i> Sign In</Link>
+    )
+  }
+
   return (
     <header className="header">
       <nav className="header__nav">
@@ -22,15 +37,7 @@ export function Header() {
           <h1 className="sr-only">Argent Bank</h1>
         </Link>
         <div>
-          {loggedIn ? (
-            <div className="logged-in-nav">
-              {userError ? null : <Link to="/profile" className="header__nav__item"><i className="fa fa-user-circle"></i> {firstName} </Link>}
-              <Link to="/" className="header__nav__item" onClick={() => dispatch({ type: 'DISCONNECT' })}><i className="fa fa-sign-out"></i> Sign Out</Link>
-            </div>
-          ) : (
-            <Link to="/login" className="header__nav__item" ><i className="fa fa-user-circle"></i> Sign In</Link>
-          )
-          }
+          <SignInButton />
         </div>
       </nav>
     </header>
