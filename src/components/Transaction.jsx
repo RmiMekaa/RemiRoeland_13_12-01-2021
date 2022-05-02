@@ -3,9 +3,9 @@ import arrowIcon from '../assets/arrowIcon.png';
 import editIcon from '../assets/editIcon.png';
 
 /**
- * React component for transaction
+ * Transaction component
  * @param {*} props 
- * @returns 
+ * @returns {React.ReactElement} 
  */
 export function Transaction(props) {
   const { date, description, amount, balance, type, category, notes } = props.data;

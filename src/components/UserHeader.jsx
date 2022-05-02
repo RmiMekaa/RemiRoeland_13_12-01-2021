@@ -4,8 +4,8 @@ import { useSelector, useDispatch } from "react-redux";
 import { selectUserFirstName, selectUserLastName, selectDisplayEditForm } from "../store/selectors";
 
 /**
- * React component for the user header on the profile page
- * @component
+ * User header component
+ * @returns {React.ReactElement} 
  */
 export function UserHeader() {
   const firstName = useSelector(selectUserFirstName)

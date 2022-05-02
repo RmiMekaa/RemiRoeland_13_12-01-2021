@@ -9,6 +9,10 @@ import { Navigate } from "react-router-dom";
 import jwtDecode from "jwt-decode";
 import { getUserProfile } from "../store/actions/getUserProfile";
 
+/**
+ * User Page component
+ * @returns {React.ReactElement} 
+ */
 export function UserPage() {
   const isLoggedIn = useSelector(selectAuthLoggedIn)
   const token = useSelector(selectAuthToken);
@@ -49,7 +53,7 @@ export function UserPage() {
       <h2 className="sr-only">Accounts</h2>
       <UserHeader />
       {accounts.map((account) => (
-        <Account key={account.id + account.name} data={account} />
+        <Account {...{ account }} />
       ))}
     </main>
   )

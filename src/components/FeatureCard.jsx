@@ -5,12 +5,12 @@ import moneyIcon from "../assets/icon-money.png";
 import securityIcon from "../assets/icon-security.png";
 
 /**
- * React component for feature card
+ * Feature card component
  * @param {Object} props 
  * @param {String} props.type  Kind of feature for icon (available so far: chat | money | security)
  * @param {String} props.title Title for the feature
  * @param {String} props.text  Description of the feature
- * @component 
+ * @returns {React.ReactElement} 
  */
 export function FeatureCard(props) {
   const { type, title, text } = props;

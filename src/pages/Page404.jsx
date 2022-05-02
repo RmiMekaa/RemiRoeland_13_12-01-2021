@@ -1,8 +1,8 @@
 import React from 'react';
 
 /**
- * React component for the page 404
- * @returns
+ * Page 404 component
+ * @returns {React.ReactElement} 
  */
 export function Page404() {
   return (

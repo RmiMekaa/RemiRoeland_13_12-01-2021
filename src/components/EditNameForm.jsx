@@ -5,8 +5,8 @@ import { editName } from "../store/actions/editName";
 import { Loader } from "./Loader";
 
 /**
- * React component for the edit name form
- * @component 
+ * Edit name form component
+ * @returns {React.ReactElement} 
  */
 export function EditNameForm() {
   const firstName = useSelector(selectUserFirstName)

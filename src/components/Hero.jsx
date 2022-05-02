@@ -1,8 +1,8 @@
 import React from "react";
 
 /**
- * React component for hero banner
- * @component
+ * Hero banner component
+ * @returns {React.ReactElement} 
  */
 export function Hero() {
   return (

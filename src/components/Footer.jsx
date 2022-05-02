@@ -2,7 +2,7 @@ import React from "react"
 
 /**
  * React component for the footer
- * @component 
+ * @returns {React.ReactElement} 
  */
 export function Footer() {
   return (

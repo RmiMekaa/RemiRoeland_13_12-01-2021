@@ -3,6 +3,10 @@ import { Transaction } from "../components/Transaction";
 import { accountsMockData } from "../mocks/accounts";
 import { useParams } from "react-router-dom";
 
+/**
+ * Transactions page component
+ * @returns {React.ReactElement} 
+ */
 export function TransactionsPage() {
 
   // Mock Data

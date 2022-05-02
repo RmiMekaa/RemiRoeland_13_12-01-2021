@@ -2,8 +2,8 @@ import React from 'react';
 import { FeatureCard } from './FeatureCard';
 
 /**
- * React component for the features section
- * @component 
+ * Features section component
+ * @returns {React.ReactElement} 
  */
 export function Features() {
   return (

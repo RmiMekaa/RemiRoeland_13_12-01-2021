@@ -5,8 +5,8 @@ import { selectAuthError, selectAuthLoading } from "../store/selectors";
 import { login } from "../store/actions/login";
 
 /**
- * React Component for the login form
- * @component
+ * Login form component
+ * @returns {React.ReactElement} 
  */
 export function Login() {
   const error = useSelector(selectAuthError);

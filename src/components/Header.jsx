@@ -5,8 +5,8 @@ import { useSelector, useDispatch } from "react-redux";
 import { selectAuthLoggedIn, selectUserError, selectUserFirstName } from "../store/selectors";
 
 /**
- * React component for the header
- * @component 
+ * Header component
+ * @returns {React.ReactElement} 
  */
 export function Header() {
   const dispatch = useDispatch();

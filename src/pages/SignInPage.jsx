@@ -5,8 +5,8 @@ import { useSelector } from 'react-redux';
 import { selectAuthLoggedIn } from '../store/selectors';
 
 /**
- * React Component for the login page
- * @component
+ * Sign in page component
+ * @returns {React.ReactElement} 
  */
 export function SignInPage() {
   const isLoggedIn = useSelector(selectAuthLoggedIn);
