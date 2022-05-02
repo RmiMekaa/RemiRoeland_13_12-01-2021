@@ -15,6 +15,46 @@ export function Transaction(props) {
   const [newCategory, setNewCategory] = useState(null);
   const [newNotes, setNewNotes] = useState(null);
 
+  const Category = () => {
+    return (
+      <span>
+        {newCategory ? newCategory : category}
+        <img className="editIcon" src={editIcon} alt='' onClick={() => setEditCategory(true)} />
+      </span>
+    )
+  }
+  const EditCategory = () => {
+    return (
+      <select onChange={(e) => {
+        setNewCategory(e.target.value);
+        setEditCategory(false)
+      }}>
+        <option value="Food">Food</option>
+        <option value="Shopping">Shopping</option>
+        <option value="Medical">Medical</option>
+        <option value="Transports">Transports</option>
+        <option value="Leisure">Leisure</option>
+      </select>
+    )
+  }
+
+  const Notes = () => {
+    return (
+      <div className="edit-notes">
+        <textarea rows="5" onChange={(e) => setNewNotes(e.target.value)}></textarea>
+        <button onClick={() => setEditNotes(false)}>OK</button>
+      </div>
+    )
+  }
+  const EditNotes = () => {
+    return (
+      <span>
+        {newNotes ? newNotes : notes}
+        <img className="editIcon" src={editIcon} alt='' onClick={() => setEditNotes(true)} />
+      </span>
+    )
+  }
+
   return (
     <details className="transaction">
       <summary className="transaction__resume">
@@ -33,39 +73,11 @@ export function Transaction(props) {
         </li>
         <li className="transaction__infos__category">
           Category:
-          {editCategory ? (
-            <select onChange={(e) => {
-              setNewCategory(e.target.value); 
-              setEditCategory(false)
-            }}>
-              <option value="Food">Food</option>
-              <option value="Shopping">Shopping</option>
-              <option value="Medical">Medical</option>
-              <option value="Transports">Transports</option>
-              <option value="Leisure">Leisure</option>
-            </select>
-          ) : (
-            <span>
-              {newCategory ? newCategory : category}
-              <img className="editIcon" src={editIcon} alt='' onClick={() => setEditCategory(true)} />
-            </span>
-          )
-          }
+          {editCategory ? <EditCategory /> : <Category />}
         </li>
         <li className="transaction__infos__notes">
           Notes:
-          {editNotes ? (
-            <div className="edit-notes">
-              <textarea rows="5" onChange={(e) => setNewNotes(e.target.value)}></textarea>
-              <button onClick={() => setEditNotes(false)}>OK</button>
-            </div>
-          ) : (
-            <span>
-              {newNotes ? newNotes : notes}
-              <img className="editIcon" src={editIcon} alt='' onClick={() => setEditNotes(true)} />
-            </span>
-          )
-          }
+          {editNotes ? <Notes /> : <EditNotes />}
         </li>
       </ul>
     </details>
