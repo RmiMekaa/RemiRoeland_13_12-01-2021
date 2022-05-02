@@ -10,10 +10,7 @@ export function TransactionsPage() {
   let account = {}
 
   accountsMockData.forEach(acc => {
-    if (acc.id === accountId) {
-      account = acc;
-    };
-    return;
+    if (acc.id === accountId) return account = acc;
   })
 
   return (
