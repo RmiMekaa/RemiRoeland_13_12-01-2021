@@ -16,8 +16,11 @@ export function Login() {
   const [password, setPassword] = useState("");
   const [rememberMe, setRememberMe] = useState(false);
 
-  //Dev only
-  const [selectedUser, setSelectedUser] = useState('Tony Stark');
+  const [selectedUser, setSelectedUser] = useState('Tony Stark');  //Dev only
+
+  const Error = () => {
+    return error ? <span className="sign-in-errorMsg" >{error}</span> : null
+  }
 
   return (
     <section className="sign-in-content">
@@ -52,7 +55,7 @@ export function Login() {
             />
             <label htmlFor="remember-me">Remember me</label>
           </div>
-          {error ? <span className="sign-in-errorMsg" >{error}</span> : null}
+          <Error />
           <button className="sign-in-button">Sign In</button>
         </form>
       )}
