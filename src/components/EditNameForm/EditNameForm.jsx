@@ -20,25 +20,28 @@ export function EditNameForm() {
 
   const dispatch = useDispatch();
 
+  if (loading) {
+    return (
+      <div className="editNameForm">
+        <Loader />
+      </div>
+    )
+  }
+
   return (
     <div className="editNameForm">
-      {loading ? <Loader /> : (
-        <>
-          {validationError ? <span className="errorMsg">{validationError}</span> : null}
-          {editRequestError ? <span className="errorMsg">{editRequestError}</span> : null}
-          <div className="editNameForm__inputs">
-            <input className="editNameForm__inputs__input" placeholder={newFirstName} onChange={(e) => setNewFirstName(e.target.value)} />
-            <input className="editNameForm__inputs__input" placeholder={newLastName} onChange={(e) => setNewLastName(e.target.value)} />
-          </div>
-          <div className="editNameForm__btns">
-            <button className="editNameForm__btns__btn" onClick={() => handleSubmit()}>Save</button>
-            <button className="editNameForm__btns__btn" onClick={() => dispatch({ type: 'CLOSE_FORM' })}>Cancel</button>
-          </div>
-        </>
-      )}
+      {validationError ? <span className="errorMsg">{validationError}</span> : null}
+      {editRequestError ? <span className="errorMsg">{editRequestError}</span> : null}
+      <div className="editNameForm__inputs">
+        <input className="editNameForm__inputs__input" placeholder={newFirstName} onChange={(e) => setNewFirstName(e.target.value)} />
+        <input className="editNameForm__inputs__input" placeholder={newLastName} onChange={(e) => setNewLastName(e.target.value)} />
+      </div>
+      <div className="editNameForm__btns">
+        <button className="editNameForm__btns__btn" onClick={() => handleSubmit()}>Save</button>
+        <button className="editNameForm__btns__btn" onClick={() => dispatch({ type: 'CLOSE_FORM' })}>Cancel</button>
+      </div>
     </div>
   )
-
 
   /**
    * Handle form submission.
