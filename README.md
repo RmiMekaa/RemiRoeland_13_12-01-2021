@@ -35,12 +35,11 @@
 
 ## Documentation
 
-[ArgentBank](https://rmimekaa.github.io/RemiRoeland_13_12-01-2021/) made with [JSDoc](https://jsdoc.app/index.html).
+[ArgentBank](https://rmimekaa.github.io/RemiRoeland_13_12-01-2021/) - made with [JSDoc](https://jsdoc.app/index.html).
 
 ------------------
 
 Hope it helps !
-
 
 <p float="left">
   <img alt="Redux" title="Redux" src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/redux/redux-original.svg" width="32px"/>
