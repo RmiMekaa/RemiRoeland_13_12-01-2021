@@ -38,23 +38,22 @@ html {
 body {
   display: flex;
   align-items: stretch;
-  margin: 0;
+  margin: 0 auto;
   flex-direction: column;
   min-height: 100vh;
   //max-width: 1440px;
-  margin: auto;
 }
 
 .sr-only {
   border: 0 !important;
-  clip: rect(1px, 1px, 1px, 1px) !important; /* 1 */
+  clip: rect(1px, 1px, 1px, 1px) !important;
   -webkit-clip-path: inset(50%) !important;
-  clip-path: inset(50%) !important; /* 2 */
+  clip-path: inset(50%) !important;
   height: 1px !important;
   margin: -1px !important;
   overflow: hidden !important;
   padding: 0 !important;
   position: absolute !important;
   width: 1px !important;
-  white-space: nowrap !important; /* 3 */
+  white-space: nowrap !important;
 }
