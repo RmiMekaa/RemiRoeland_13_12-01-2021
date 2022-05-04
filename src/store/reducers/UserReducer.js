@@ -13,7 +13,7 @@ const initialState = {
  * @param {object} state
  * @param {object} action
  */
-export function UserReducer(state = initialState, action) {
+export function UserReducer(state = initialState, action = {}) {
   switch (action.type) {
     case 'OPEN_FORM': {
       return {

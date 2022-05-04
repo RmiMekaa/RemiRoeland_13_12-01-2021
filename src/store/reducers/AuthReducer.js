@@ -11,7 +11,7 @@ const initialState = {
  * @param {object} state
  * @param {object} action
  */
-export function AuthReducer(state = initialState, action) {
+export function AuthReducer(state = initialState, action = {}) {
   switch (action.type) {
     case 'LOGIN_INIT': {
       return {
