@@ -13,7 +13,7 @@
 ## Project objectives
 
  - Convert the provided [code base](https://github.com/OpenClassrooms-Student-Center/Project-10-Bank-API/tree/master/designs) into React
- - Use the provided [API](https://github.com/OpenClassrooms-Student-Center/Project-10-Bank-API) to implement an account system ([Find out more](https://github.com/OpenClassrooms-Student-Center/Project-10-Bank-API/tree/master/.github/ISSUE_TEMPLATE)).
+ - Use the [provided API](https://github.com/OpenClassrooms-Student-Center/Project-10-Bank-API) to implement an account system ([Find out more](https://github.com/OpenClassrooms-Student-Center/Project-10-Bank-API/tree/master/.github/ISSUE_TEMPLATE)).
 
  ## Features
 
@@ -31,7 +31,7 @@
 1. Clone this repository
 2. Install dependencies: ```npm install```
 3. Launch the App: ```npm start```
-4. Install and launch the delivered [API](https://github.com/OpenClassrooms-Student-Center/Project-10-Bank-API) to access to the database and test the app.
+4. Install and launch the [provided API](https://github.com/OpenClassrooms-Student-Center/Project-10-Bank-API) to access to the database and test the app.
 
 ## Documentation
 
