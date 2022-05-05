@@ -1,6 +1,7 @@
 # OpenClassrooms - Project 13
 **Project Name: ArgentBank**  
-**Project Title: "Use an API to handle user accounts"** 
+**Project Title: "Use an API to handle user accounts"**  
+**Test it ! : As this project use an external micro API, you have to [install it](#installation) to be able to test it** 
 
 [![Maintainability Rating](https://sonarcloud.io/api/project_badges/measure?project=RmiMekaa_RemiRoeland_13_12-01-2021&metric=sqale_rating)](https://sonarcloud.io/summary/new_code?id=RmiMekaa_RemiRoeland_13_12-01-2021)
 [![Reliability Rating](https://sonarcloud.io/api/project_badges/measure?project=RmiMekaa_RemiRoeland_13_12-01-2021&metric=reliability_rating)](https://sonarcloud.io/summary/new_code?id=RmiMekaa_RemiRoeland_13_12-01-2021)
@@ -30,7 +31,6 @@
 1. Clone this repository
 2. Install dependencies: ```npm install```
 3. Launch the App: ```npm start```
-
 4. Install and launch the delivered [API](https://github.com/OpenClassrooms-Student-Center/Project-10-Bank-API) to access to the database and test the app.
 
 ## Documentation
